@@ -1,4 +1,3 @@
-
 from operator import truediv
 from random import randint
 from xml.etree.ElementTree import tostring
@@ -56,7 +55,7 @@ while True:
     listaBin = []
     for i in range(64):
         listaBin.append(dec_bin(i))
-        print(i, " en binario es ", listaBin[i])
+      #  print(i, " en binario es ", listaBin[i])
 
     #Con el algoritmo de las sumas compruebo que sea adecuado
 
@@ -75,16 +74,18 @@ while True:
                 
         if (sumaVerify[i] > 25):
             sumaVerify[i] -= 26
-        print(i ,": ", sumaVerify[i])
+        #print(i ,": ", sumaVerify[i])
 
-    todos=0;
+    todos=0
     for i in range(25):
         if i in sumaVerify:
-            print("El número " , i, "Sí está")
+           # print("El número " , i, "Sí está")
             todos = todos+1
-        else:
-            print(i, "no está")
+        #else:
+            #print(i, "no está")
     
     if todos == 25:
         break
 
+#Para probar por último imprimimos la clave seleccionada
+print(lista)    
