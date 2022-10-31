@@ -70,7 +70,7 @@ while True:
             if (c == '1'):
                 sumaVerify[i] += lista[pos]
         #        print("por eso entra y suma " , lista[pos])
-            pos = pos + 1
+            pos += 1
                 
         if (sumaVerify[i] > 25):
             sumaVerify[i] -= 26
@@ -89,3 +89,40 @@ while True:
 
 #Para probar por último imprimimos la clave seleccionada
 print(lista)    
+
+#Creamos el diccionario que definirá el estado del tambor indicando las orejetas colocadas
+tambor = {}
+orejetas = []
+necesarias = 0
+counter = 0
+for i in range(6):
+    necesarias = lista[i] + counter
+    for j in range(27):
+        if(counter <= j < necesarias):
+            orejetas.append(1)
+            counter += 1
+        else:
+            orejetas.append(0)
+    tambor[i] = orejetas.copy()
+    orejetas.clear()
+
+# Añadimos las barras de movimiento juntos con sus orejetas
+tambor[0] += [1,1,1,1,1]
+tambor[1] += [0,1,1,1,1]
+tambor[2] += [0,0,1,1,1]
+tambor[3] += [0,0,0,1,1]
+tambor[4] += [0,0,0,0,1]
+tambor[5] += [0,0,0,0,0]            #La primera barra siempre se mueve sin importar las orejetas
+""" necesarias = 6
+tambor[5] += [0,0,0,0,0]            #La primera barra siempre se mueve sin importar las orejetas
+for i in range(5):
+    necesarias -= 1
+    for j in range(5):
+        if(j < necesarias):
+            orejetas.append(1)
+        else:
+            orejetas.append(0)
+    tambor[i] += orejetas
+    orejetas.clear() """
+
+print(tambor)
