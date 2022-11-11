@@ -82,3 +82,12 @@ for x,y in wheels.items():
             else:
                 y[i] = 0
 print(wheels)
+
+posWheels = [0,0,0,0,0,0]
+
+message = ''
+for i in range(6):
+    message = "\nRango de 0 a " + str(list(wheels.keys())[i] - 1) + ' ---> Posicion inicial rueda ' + str(i + 1) + ': '
+    posWheels[i] = int(input(message))
+
+print(posWheels)
