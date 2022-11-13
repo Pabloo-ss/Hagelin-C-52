@@ -4,19 +4,19 @@ from collections import deque
 
 #inicialmente la rueda sería dos arrays
 
-rueda1 = deque(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'])
-rueda2 = deque(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'])
-rueda2.rotate(1)
-n = 1
+def impressionWheels(n):
+    rueda1 = deque(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'])
+    rueda2 = deque(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'])
+    rueda2.rotate(n)
 
-print("Antes de desplazar: ", rueda1)
-rueda1.rotate(n)
-print("Después: ", rueda1)
+    return (rueda1, rueda2)
+
+
 
 def imprime(rueda):
     print(rueda[0])
 
-def variable(letra):
+def variable(letra, rueda1, rueda2):
     i = 0
     while letra != rueda1[i]:
         rueda1.rotate(1)
@@ -25,7 +25,7 @@ def variable(letra):
     imprime(rueda2)
 
 
-def constante(letra):
+def constante(letra, rueda1, rueda2):
     i = 0
     while letra != rueda1[i]:
         rueda1.rotate(1)
@@ -34,7 +34,6 @@ def constante(letra):
     imprime(rueda1)
     imprime(rueda2)
     
-
 
 #En el modo Variable la posición entre la de la izq 
 #la de la der cambia constantemente
