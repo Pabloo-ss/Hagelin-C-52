@@ -16,4 +16,16 @@ ruedas, posRuedas = wheels()
 tambor = drum()
 ruedaImp1, ruedaImp2 = impressionWheels(1)
 
+#Primero imprimimos la letra sin cifrar que queremos
+imprimeTextoPlano('P', ruedaImp1, ruedaImp2)
+
+# Comprobar el desplazamiento a aplicar empezando por la columna de la izquierda
+# ***Columna 1***
+# 1º miramos si el brazo guía está activo comprobando el pin de la posición de la rueda de esa columna
+
+# 2º si está activo comprobamos cuantas barras se verían desplazadas para añadir un paso a la rueda de impresión de cifrado
+
+# si no lo está pasamos a la siguiente columna
+
+# ***Columna 2***
 
