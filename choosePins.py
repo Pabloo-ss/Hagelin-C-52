@@ -71,7 +71,7 @@ def wheels():
 
     return (wheels, posWheels)
 
-def advanceWheel(wheels, posWheels, wich, steps):
+def advanceWheel(wheels, posWheels, which, steps):
     
-    posWheels[wich] = (posWheels[wich] + steps) % wheels.keys()[wich] 
+    posWheels[which] = (posWheels[which] + steps) % wheels.keys()[which] 
 

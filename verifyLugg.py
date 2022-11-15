@@ -113,7 +113,8 @@ def drum():
     tambor[2] += [0,0,1,1,1]
     tambor[3] += [0,0,0,1,1]
     tambor[4] += [0,0,0,0,1]
-    tambor[5] += [0,0,0,0,0]            #La primera barra siempre se mueve sin importar las orejetas
-
+    tambor[5] += [0,0,0,0,0]            
+    
+    #La posicion 0 se corresponde con la primera columna por la izquierda y el array son las orejetas de las 32 barras de esa columna
 
     return tambor

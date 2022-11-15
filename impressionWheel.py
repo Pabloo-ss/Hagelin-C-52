@@ -12,11 +12,20 @@ def impressionWheels(n):
     return (rueda1, rueda2)
 
 
-
 def imprime(rueda):
     print(rueda[0])
 
-def variable(letra, rueda1, rueda2):
+def imprimeTextoPlano(letra, rueda1, rueda2):
+    while letra != rueda1[0]:
+        rueda1.rotate(1)
+        rueda2.rotate(1)
+    imprime(rueda1)
+
+def imprimeTextoCifrado(rueda, n):
+    rueda.rotate(n)
+    imprime(rueda)
+
+""" def variable(letra, rueda1, rueda2):
     i = 0
     while letra != rueda1[i]:
         rueda1.rotate(1)
@@ -32,7 +41,7 @@ def constante(letra, rueda1, rueda2):
         rueda2.rotate(1)
         i += 1
     imprime(rueda1)
-    imprime(rueda2)
+    imprime(rueda2) """
     
 
 #En el modo Variable la posición entre la de la izq 
