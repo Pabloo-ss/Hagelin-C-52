@@ -21,9 +21,10 @@ def imprimeTextoPlano(letra, rueda1, rueda2):
         rueda2.rotate(1)
     imprime(rueda1)
 
-def imprimeTextoCifrado(rueda, n):
-    rueda.rotate(n)
-    imprime(rueda)
+def imprimeTextoCifrado(rueda1, rueda2, n):
+    rueda1.rotate(n)
+    rueda2.rotate(n)
+    imprime(rueda2)
 
 """ def variable(letra, rueda1, rueda2):
     i = 0

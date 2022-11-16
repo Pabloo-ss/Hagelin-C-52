@@ -73,9 +73,9 @@ def wheels():
     return (wheels, posWheels)
 
 #Avanza las ruedas el número de pasos necesarios
-def advanceWheel(wheels, posWheels, which, steps):
-    
-    posWheels[which] = (posWheels[which] + steps) % wheels.keys()[which] 
+def advanceWheels(wheels, posWheels, steps):
+    for i in range(len(posWheels)):
+        posWheels[i] = (posWheels[i] + steps[i]) % list(wheels.keys())[i] 
 
 #Comprueba si hay un pin activo en la posición actual
 def isBrazoActivo(rueda, pos):

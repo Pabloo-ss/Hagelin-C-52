@@ -24,9 +24,9 @@ def drum():
         #print("Hemos salido del bucle")
 
         #Tras generar dichos números, los paso a binario
-        for i in range(6):
+        """ for i in range(6):
             print(lista[i])
-
+ """
         #Función para pasar un número de decimal a binario, teniendo cada número 6 dígitos
         def dec_bin(n):
             bin = 0
@@ -118,3 +118,20 @@ def drum():
     #La posicion 0 se corresponde con la primera columna por la izquierda y el array son las orejetas de las 32 barras de esa columna
 
     return tambor
+
+
+# Para saber el número de orejetas en una columna (sin tener en cuenta las barras de desplazamiento)
+def orejetasInCol(orejetas):
+    num = 0
+    for i in range(27):
+        num += orejetas[i]
+    
+    return num
+
+# Para saber el número de orejetasen barras de desplazamiento en una columna
+def orejetasInColDespl(orejetas):
+    num = 0
+    for i in range(27, len(orejetas)):
+        num += orejetas[i]
+    
+    return num
