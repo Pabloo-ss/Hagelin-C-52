@@ -13,18 +13,19 @@ def impressionWheels(n):
 
 
 def imprime(rueda):
-    print(rueda[0])
+    #print(rueda[0], end=" ")
+    return rueda[0]
 
-def imprimeTextoPlano(letra, rueda1, rueda2):
+def imprimeTextoR1(letra, rueda1, rueda2):
     while letra != rueda1[0]:
         rueda1.rotate(1)
         rueda2.rotate(1)
-    imprime(rueda1)
+    return imprime(rueda1)
 
-def imprimeTextoCifrado(rueda1, rueda2, n):
+def imprimeTextoR2(rueda1, rueda2, n):
     rueda1.rotate(n)
     rueda2.rotate(n)
-    imprime(rueda2)
+    return imprime(rueda2)
 
 """ def variable(letra, rueda1, rueda2):
     i = 0
