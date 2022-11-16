@@ -1,5 +1,6 @@
 from random import randint
 
+#Creación de las ruedas y las posiciones iniciales de las mismas
 def wheels():
     #Partimos de la definición de las ruedas
     ruedas = {
@@ -32,7 +33,7 @@ def wheels():
             if  not (newWheel in ruedasSelected):
                 esta = 0
         ruedasSelected.append(newWheel)
-    print(ruedasSelected)
+    #print(ruedasSelected)
 
     #Wheels almacena las ruedas seleccionadas junto con sus pines
     counter = 0
@@ -71,7 +72,14 @@ def wheels():
 
     return (wheels, posWheels)
 
+#Avanza las ruedas el número de pasos necesarios
 def advanceWheel(wheels, posWheels, which, steps):
     
     posWheels[which] = (posWheels[which] + steps) % wheels.keys()[which] 
 
+#Comprueba si hay un pin activo en la posición actual
+def isBrazoActivo(rueda, pos):
+    if(rueda[pos]):
+        return True
+    else:
+        return False

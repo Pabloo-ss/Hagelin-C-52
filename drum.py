@@ -89,7 +89,7 @@ def drum():
             break
 
     #Para probar por último imprimimos la clave seleccionada
-    print(lista)    
+    #print(lista)    
 
     #Creamos el diccionario que definirá el estado del tambor indicando las orejetas colocadas
     tambor = {}
