@@ -18,6 +18,7 @@ ruedas, posRuedas = wheels()
 tambor = drum()
 n = int(input("\nDesplazamiento inicial de la rueda de impresión: "))
 ruedaImp1, ruedaImp2 = impressionWheels(n)
+variable = bool(input("\¿Quiere que sea variable? 1/0: "))
 
 configInicial = {
     "ruedasI": ruedas,
@@ -64,7 +65,7 @@ for letra in texto:
 
 
     # Tenemos el numero de pasos extra que se aplicarán a la rueda de impresión para el cifrado
-    textoCifrado += imprimeTextoR2(ruedaImp1, ruedaImp2, barras)
+    textoCifrado += imprimeTextoR2(ruedaImp1, ruedaImp2, barras, variable)
 
     # Tenemos el desplazamiento de cada rueda
     advanceWheels(ruedas, posRuedas, barrasDesp)
@@ -116,7 +117,7 @@ for letra in textoCifrado:
 
 
     # Tenemos el numero de pasos extra que se aplicarán a la rueda de impresión para el cifrado
-    textoDescifrado += imprimeTextoR2(ruedaImp1, ruedaImp2, barras)
+    textoDescifrado += imprimeTextoR2(ruedaImp1, ruedaImp2, barras, variable)
 
     # Tenemos el desplazamiento de cada rueda
     advanceWheels(ruedas, posRuedas, barrasDesp)

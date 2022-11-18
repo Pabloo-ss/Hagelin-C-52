@@ -20,7 +20,8 @@ def imprimeTextoR1(letra, rueda1, rueda2):
         rueda2.rotate(1)
     return imprime(rueda1)
 
-def imprimeTextoR2(rueda1, rueda2, n):
-    rueda1.rotate(-n)
+def imprimeTextoR2(rueda1, rueda2, n, variable):
+    if (not variable):
+        rueda1.rotate(-n)
     rueda2.rotate(n)
-    return imprime(rueda2)
+    return imprime(rueda2)  
