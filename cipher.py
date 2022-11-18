@@ -26,11 +26,6 @@ configInicial = {
     "ruedaImp": n
 }
 
-""" print("********principio*********")
-print("Ruedas", ruedas, posRuedas)
-print("Tambor", tambor)
-print("RuedasImp", ruedaImp1, ruedaImp2) """
-
 #Se pide al usuario el texto a cifrar y se codifica pasándolo a mayúsculas y sustituyendo los espacios por 'X'
 print("\n-------> Proceso de cifrado")
 texto = input("Texto a cifrar: ").upper()
@@ -39,7 +34,6 @@ textoPlano = ""
 textoCifrado = ""
 for letra in texto:
     textoPlano += imprimeTextoR1(letra, ruedaImp1, ruedaImp2)
-    """ print("RuedasImp", ruedaImp1, ruedaImp2) """
 
     # Comprobar el desplazamiento a aplicar empezando por la columna de la izquierda. También comprobamos las barras de desplazamiento
     barrasDesp = [1, 0, 0, 0, 0, 0]
@@ -71,16 +65,9 @@ for letra in texto:
 
     # Tenemos el numero de pasos extra que se aplicarán a la rueda de impresión para el cifrado
     textoCifrado += imprimeTextoR2(ruedaImp1, ruedaImp2, barras)
-    """ print("Dientes impresion", barras) """
 
     # Tenemos el desplazamiento de cada rueda
     advanceWheels(ruedas, posRuedas, barrasDesp)
-    """ print("Dezplazamiento ruedas", barrasDesp) """
-
-""" print("********Final*********")
-print("Ruedas", ruedas, posRuedas)
-print("Tambor", tambor)
-print("RuedasImp", ruedaImp1, ruedaImp2) """
 
 print("Texto codificado: ", textoPlano)
 print("Texto cifrado: ", textoCifrado)
@@ -95,14 +82,10 @@ tambor = configInicial["tamborI"] #no es realmente necesario porque no se modifi
 ruedaImp1, ruedaImp2 = impressionWheels(configInicial["ruedaImp"])
 
 print("\n-------> Proceso de descifrado")
-""" print("********principio*********")
-print("Ruedas", ruedas, posRuedas)
-print("Tambor", tambor)
-print("RuedasImp", ruedaImp1, ruedaImp2) """
+
 textoDescifrado = ""
 for letra in textoCifrado:
     textoPlano += imprimeTextoR1(letra, ruedaImp1, ruedaImp2)
-    """ print("RuedasImp", ruedaImp1, ruedaImp2) """
 
     # Comprobar el desplazamiento a aplicar empezando por la columna de la izquierda. También comprobamos las barras de desplazamiento
     barrasDesp = [1, 0, 0, 0, 0, 0]
@@ -134,19 +117,12 @@ for letra in textoCifrado:
 
     # Tenemos el numero de pasos extra que se aplicarán a la rueda de impresión para el cifrado
     textoDescifrado += imprimeTextoR2(ruedaImp1, ruedaImp2, barras)
-    """ print("Dientes impresion", barras) """
 
     # Tenemos el desplazamiento de cada rueda
     advanceWheels(ruedas, posRuedas, barrasDesp)
-    """ print("Dezplazamiento ruedas", barrasDesp) """
 
 
 print("Texto cifrado: ", textoCifrado)
 print("Texto descifrado: ", textoDescifrado)
 print("Texto original: ", textoDescifrado.replace("X", " "))
 
-
-""" print("********Final*********")
-print("Ruedas", ruedas, posRuedas)
-print("Tambor", tambor)
-print("RuedasImp", ruedaImp1, ruedaImp2) """

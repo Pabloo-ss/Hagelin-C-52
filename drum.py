@@ -1,6 +1,7 @@
 from operator import truediv
 from random import randint
 from xml.etree.ElementTree import tostring
+
 #Función para pasar un número de decimal a binario, teniendo cada número 6 dígitos
 def dec_bin(n):
     bin = 0
@@ -37,13 +38,6 @@ def drum():
             #print("La suma es " , suma)
             if (suma==27):
                 sumaTot=27
-
-        #print("Hemos salido del bucle")
-
-        #Tras generar dichos números, los paso a binario
-        """ for i in range(6):
-            print(lista[i])
- """
 
         #Hago una lista con los números del 1 al 64 en binario
 
@@ -112,9 +106,7 @@ def drum():
     tambor[5] += [0,0,0,0,0]            
     
     #La posicion 0 se corresponde con la primera columna por la izquierda y el array son las orejetas de las 32 barras de esa columna
-
     return tambor
-
 
 # Para saber el número de orejetas en una columna (sin tener en cuenta las barras de desplazamiento)
 def orejetasInCol(orejetas):
