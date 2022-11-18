@@ -14,7 +14,7 @@ def imprime(rueda):
 
 def imprimeTextoR1(letra, rueda1, rueda2):
     while letra != rueda1[0]:
-        #Aquí las ruedas de impresión rotan en sentido contrario pues son 
+        #Aquí las ruedas de impresión rotan en sentido contrario pues son recíprocas (de no ser así el proceso de descifrado no funcionaría)
         rueda1.rotate(-1)
         rueda2.rotate(1)
     return imprime(rueda1)
