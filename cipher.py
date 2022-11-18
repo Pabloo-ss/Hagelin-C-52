@@ -13,13 +13,61 @@ from wheels import *
 # Pero creo q es que primero imprime la normal y a la segunda se le aplica el desplazamiento: en el modo variable este desplazamiento se aplica
 # solo a segundo rueda de impresión, mientras que em el constante se aplica a las dos.
 
-#Creamos las ruedas con sus pines y el tambor con sus orejetas. Tambien las ruedas de impresión con su desplazamiento inicial
+#FUNCIÓN PARA CIFRAR/DESCIFRAR
+
+def cipher_decipher(texto, texto1, texto2):
+#En cifrado será texto, textoPlano, textoCifrado
+#En descifrado será textoCifrado, textoPlano, textoDescifrado
+    for letra in texto:
+        texto1 += imprimeTextoR1(letra, ruedaImp1, ruedaImp2)
+
+        # Comprobar el desplazamiento a aplicar empezando por la columna de la izquierda. También comprobamos las barras de desplazamiento
+        barrasDesp = [1, 0, 0, 0, 0, 0]
+        col = -1
+        colDesp = 0
+        barras = 0
+
+        # ***Columnas 1-5***
+        for i in range(5):
+            col += 1    
+            colDesp += 1
+            # 1º miramos si el brazo guía está activo comprobando el pin de la posición de la rueda de esa columna
+            if (isBrazoActivo(list(ruedas.values())[col], posRuedas[col])):
+                # 2º si está activo comprobamos cuantas barras se verían desplazadas para añadir un paso a la rueda de impresión de cifrado
+                barras += orejetasInCol(list(tambor.values())[col])
+                # 3º comprobamos las barras de desplazaminto desplazadas a la izuqierda
+                desplazamientos  = orejetasInColDespl(list(tambor.values())[col])
+                for i in range(colDesp, len(barrasDesp)):
+                    barrasDesp[i] += desplazamientos / (len(barrasDesp) - colDesp)
+            # si no está activo pasamos a la siguiente columna
+        
+        # ***Columna 6***
+        col += 1
+        # 1º miramos si el brazo guía está activo comprobando el pin de la posición de la rueda de esa columna
+        if (isBrazoActivo(list(ruedas.values())[col], posRuedas[col])):
+            # 2º si está activo comprobamos cuantas barras se verían desplazadas para añadir un paso a la rueda de impresión de cifrado
+            barras += orejetasInCol(list(tambor.values())[col])
+            # En la última columna no es necesario comprobar las barras de desplazamiento
+
+        # Tenemos el numero de pasos extra que se aplicarán a la rueda de impresión para el cifrado
+        texto2 += imprimeTextoR2(ruedaImp1, ruedaImp2, barras, variable)
+
+        # Tenemos el desplazamiento de cada rueda
+        advanceWheels(ruedas, posRuedas, barrasDesp)
+
+    return (texto, texto1, texto2)
+
+#CONFIGURAMOS LAS RUEDAS Y EL TAMBOR
+
+#Creamos las ruedas con sus pines y el tambor con sus orejetas. Tambien las ruedas de impresión con su desplazamiento inicial y se establece si 
+#el modo será o no variable para las ruedas de impresión
 ruedas, posRuedas = wheels()
 tambor = drum()
 n = int(input("\nDesplazamiento inicial de la rueda de impresión: "))
 ruedaImp1, ruedaImp2 = impressionWheels(n)
-variable = bool(input("\¿Quiere que sea variable? 1/0: "))
+variable = bool(input("\¿Quiere que sea variable? 1/0: "))  
 
+#Debemos guardar la configuración inicial para cuando vayamos a descifrar
 configInicial = {
     "ruedasI": ruedas,
     "posRuedasI": posRuedas.copy(), #Solamente es necesrio el .copy() en esta porque es la única que se modifica
@@ -27,103 +75,36 @@ configInicial = {
     "ruedaImp": n
 }
 
-#Se pide al usuario el texto a cifrar y se codifica pasándolo a mayúsculas y sustituyendo los espacios por 'X'
+#CIFRADO 
+
 print("\n-------> Proceso de cifrado")
+
+#Se pide al usuario el texto a cifrar y se codifica pasándolo a mayúsculas y sustituyendo los espacios por 'X'
 texto = input("Texto a cifrar: ").upper()
 texto = texto.replace(" ", "X")
+
 textoPlano = ""
 textoCifrado = ""
-for letra in texto:
-    textoPlano += imprimeTextoR1(letra, ruedaImp1, ruedaImp2)
 
-    # Comprobar el desplazamiento a aplicar empezando por la columna de la izquierda. También comprobamos las barras de desplazamiento
-    barrasDesp = [1, 0, 0, 0, 0, 0]
-    col = -1
-    colDesp = 0
-    barras = 0
-    # ***Columnas 1-5***
-    for i in range(5):
-        col += 1    
-        colDesp += 1
-        # 1º miramos si el brazo guía está activo comprobando el pin de la posición de la rueda de esa columna
-        if (isBrazoActivo(list(ruedas.values())[col], posRuedas[col])):
-            # 2º si está activo comprobamos cuantas barras se verían desplazadas para añadir un paso a la rueda de impresión de cifrado
-            barras += orejetasInCol(list(tambor.values())[col])
-            # 3º comprobamos las barras de desplazaminto desplazadas a la izuqierda
-            desplazamientos  = orejetasInColDespl(list(tambor.values())[col])
-            for i in range(colDesp, len(barrasDesp)):
-                barrasDesp[i] += desplazamientos / (len(barrasDesp) - colDesp)
-        # si no está activo pasamos a la siguiente columna
-    
-    # ***Columna 6***
-    col += 1
-    # 1º miramos si el brazo guía está activo comprobando el pin de la posición de la rueda de esa columna
-    if (isBrazoActivo(list(ruedas.values())[col], posRuedas[col])):
-        # 2º si está activo comprobamos cuantas barras se verían desplazadas para añadir un paso a la rueda de impresión de cifrado
-        barras += orejetasInCol(list(tambor.values())[col])
-        # En la última columna no es necesario comprobar las barras de desplazamiento
-
-
-    # Tenemos el numero de pasos extra que se aplicarán a la rueda de impresión para el cifrado
-    textoCifrado += imprimeTextoR2(ruedaImp1, ruedaImp2, barras, variable)
-
-    # Tenemos el desplazamiento de cada rueda
-    advanceWheels(ruedas, posRuedas, barrasDesp)
+texto, textoPlano, textoCifrado = cipher_decipher(texto, textoPlano, textoCifrado)
 
 print("Texto codificado: ", textoPlano)
 print("Texto cifrado: ", textoCifrado)
 
-##############################
+#DESCIFRADO
 
-#Iniciamos el proceso de descifrado
+print("\n-------> Proceso de descifrado")
+
 #Recuperamos la configuración inicial
 ruedas = configInicial["ruedasI"] #no es realmente necesario porque no se modifica
 posRuedas = configInicial["posRuedasI"]
 tambor = configInicial["tamborI"] #no es realmente necesario porque no se modifica
 ruedaImp1, ruedaImp2 = impressionWheels(configInicial["ruedaImp"])
 
-print("\n-------> Proceso de descifrado")
-
 textoDescifrado = ""
-for letra in textoCifrado:
-    textoPlano += imprimeTextoR1(letra, ruedaImp1, ruedaImp2)
 
-    # Comprobar el desplazamiento a aplicar empezando por la columna de la izquierda. También comprobamos las barras de desplazamiento
-    barrasDesp = [1, 0, 0, 0, 0, 0]
-    col = -1
-    colDesp = 0
-    barras = 0
-    # ***Columnas 1-5***
-    for i in range(5):
-        col += 1    
-        colDesp += 1
-        # 1º miramos si el brazo guía está activo comprobando el pin de la posición de la rueda de esa columna
-        if (isBrazoActivo(list(ruedas.values())[col], posRuedas[col])):
-            # 2º si está activo comprobamos cuantas barras se verían desplazadas para añadir un paso a la rueda de impresión de cifrado
-            barras += orejetasInCol(list(tambor.values())[col])
-            # 3º comprobamos las barras de desplazaminto desplazadas a la izuqierda
-            desplazamientos  = orejetasInColDespl(list(tambor.values())[col])
-            for i in range(colDesp, len(barrasDesp)):
-                barrasDesp[i] += desplazamientos / (len(barrasDesp) - colDesp)
-        # si no está activo pasamos a la siguiente columna
-
-    # ***Columna 6***
-    col += 1
-    # 1º miramos si el brazo guía está activo comprobando el pin de la posición de la rueda de esa columna
-    if (isBrazoActivo(list(ruedas.values())[col], posRuedas[col])):
-        # 2º si está activo comprobamos cuantas barras se verían desplazadas para añadir un paso a la rueda de impresión de cifrado
-        barras += orejetasInCol(list(tambor.values())[col])
-        # En la última columna no es necesario comprobar las barras de desplazamiento
-
-
-    # Tenemos el numero de pasos extra que se aplicarán a la rueda de impresión para el cifrado
-    textoDescifrado += imprimeTextoR2(ruedaImp1, ruedaImp2, barras, variable)
-
-    # Tenemos el desplazamiento de cada rueda
-    advanceWheels(ruedas, posRuedas, barrasDesp)
-
+textoCifrado, textoPlano, textoDescifrado = cipher_decipher(textoCifrado, textoPlano, textoDescifrado)
 
 print("Texto cifrado: ", textoCifrado)
 print("Texto descifrado: ", textoDescifrado)
 print("Texto original: ", textoDescifrado.replace("X", " "))
-

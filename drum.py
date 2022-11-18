@@ -12,10 +12,10 @@ def dec_bin(n):
         n //= 2
         mult *= 10
             
+    #Si el número en binario tiene menos de 6 dígitos se le añaden 0 a la izquierda
     toStr = str(bin)
     while (len(toStr) < 6):
-        #  print(toStr , " tiene longitud ", len(toStr))
-        toStr = '0' + toStr
+        toStr = '0' + toStr 
 
     return toStr
 
@@ -23,31 +23,26 @@ def dec_bin(n):
 def drum():
     while True:
         sumaTot=0
-        lista = []
+        lista = []  #Almacenará la clave
         #Quiero obtener 6 números "random" entre 1 y 14
         while (sumaTot!=27):
             lista.clear()
             for i in range(6):  #i = 0; i < 6
                 lista.append(randint(1,14))
-            # print("Rand número " , i, " es ", lista[i])
 
             #Debo comprobar que su suma es 27
             suma=0
             for n in lista:
                 suma += n
-            #print("La suma es " , suma)
             if (suma==27):
                 sumaTot=27
 
-        #Hago una lista con los números del 1 al 64 en binario
-
+        #Hago una lista con los números del 1 al 64 en binari
         listaBin = []
         for i in range(64):
             listaBin.append(dec_bin(i))
-        #  print(i, " en binario es ", listaBin[i])
 
         #Con el algoritmo de las sumas compruebo que sea adecuado
-
         sumaVerify = []
         for i in range(64):
             sumaVerify.append(0)
@@ -55,31 +50,23 @@ def drum():
             pos = 0
 
             for c in caracteres:
-            #    print("el número ", i, "tiene ", c )
                 if (c == '1'):
                     sumaVerify[i] += lista[pos]
-            #        print("por eso entra y suma " , lista[pos])
                 pos += 1
                     
             if (sumaVerify[i] > 25):
                 sumaVerify[i] -= 26
-            #print(i ,": ", sumaVerify[i])
 
         todos=0
         for i in range(25):
             if i in sumaVerify:
-            # print("El número " , i, "Sí está")
                 todos = todos+1
-            #else:
-                #print(i, "no está")
         
         if todos == 25:
-            break
-
-    #Para probar por último imprimimos la clave seleccionada
-    #print(lista)    
-
-    #Al llegar a  este punto ya tenemos una clave adecuada
+            #Si llega aquí ya tengo una clave adecuada según el algoritmo
+            #luego puedo salir del while
+            break   
+   
 
     #Creamos el diccionario que definirá el estado del tambor indicando las orejetas colocadas
     tambor = {}
@@ -90,22 +77,22 @@ def drum():
         necesarias = lista[i] + counter
         for j in range(27):
             if(counter <= j < necesarias):
-                orejetas.append(1)
+                orejetas.append(1)  
                 counter += 1
             else:
                 orejetas.append(0)
         tambor[i] = orejetas.copy()
         orejetas.clear()
 
-    # Añadimos las barras de movimiento juntos con sus orejetas
+    # Añadimos las barras de movimiento juntos con sus orejetas (seguimos un lug setting adecuado)
     tambor[0] += [1,1,1,1,1]
     tambor[1] += [0,1,1,1,1]
     tambor[2] += [0,0,1,1,1]
     tambor[3] += [0,0,0,1,1]
     tambor[4] += [0,0,0,0,1]
     tambor[5] += [0,0,0,0,0]            
-    
     #La posicion 0 se corresponde con la primera columna por la izquierda y el array son las orejetas de las 32 barras de esa columna
+    
     return tambor
 
 # Para saber el número de orejetas en una columna (sin tener en cuenta las barras de desplazamiento)

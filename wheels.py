@@ -26,14 +26,13 @@ def wheels():
     #Se eligen 6 de las 12 ruedas al azar, con un orden también elegido al azar
 
     ruedasSelected = []
-    for i in range(6):  #i = 0; i < 6
+    for i in range(6): 
         esta = 1
-        while (esta == 1):
+        while (esta == 1):  #Si una rueda ya ha sido seleccionada no puede volver a seleccionarse
             newWheel = randint(0,11)
             if  not (newWheel in ruedasSelected):
                 esta = 0
         ruedasSelected.append(newWheel)
-    #print(ruedasSelected)
 
     #Wheels almacena las ruedas seleccionadas junto con sus pines
     counter = 0
@@ -55,24 +54,23 @@ def wheels():
         y[2] = randint(0,1)
         for i in range(3,x): 
             pin = randint(0,1)      #Como si se lanzase la moneda
-            if (y[i-1] != pin or y[i-2]!= pin or y[i-3] != pin):
+            if (y[i-1] != pin or y[i-2]!= pin or y[i-3] != pin):    #No debe haber más de 3 pines activos seguidos
                 y[i] = pin
             else:
-            # print("En el pin número ", i, " ha habido que cambiarlo porque  ", pinesAct[i-1] , " , ", pinesAct[i-2], " y ", pinesAct[i-3])
                 if (pin == 0):
                     y[i] = 1
                 else:
                     y[i] = 0
-                    
+
     posWheels = [0,0,0,0,0,0]
 
     # Determina la posición inicial de cada rueda, recibiéndola por teclado
     message = ''
     for i in range(6):
         message = "\nRango de 0 a " + str(list(wheels.keys())[i] - 1) + ' ---> Posicion inicial rueda ' + str(i + 1) + ': '
-        ran = int(input(message));
-        if ran in range(0, list(wheels.keys())[i] - 1):
-            posWheels[i] = ran
+        ran = int(input(message))
+        if ran in range(0, list(wheels.keys())[i] - 1): #Comprueba que la posición esté en el rango adecuado
+            posWheels[i] = ran                          #y establece la posición inicial de cada rueda
         else:
             message = "\ERROR. No pertenece al rango adecuado"
 
