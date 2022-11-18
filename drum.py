@@ -6,7 +6,6 @@ from xml.etree.ElementTree import tostring
 def dec_bin(n):
     bin = 0
     mult = 1
-
     while n != 0:
         bin = bin + n%2*mult
         n //= 2
@@ -16,7 +15,7 @@ def dec_bin(n):
     toStr = str(bin)
     while (len(toStr) < 6):
         toStr = '0' + toStr 
-
+   
     return toStr
 
 
@@ -27,7 +26,7 @@ def drum():
         #Quiero obtener 6 números "random" entre 1 y 14
         while (sumaTot!=27):
             lista.clear()
-            for i in range(6):  #i = 0; i < 6
+            for i in range(6):  
                 lista.append(randint(1,14))
 
             #Debo comprobar que su suma es 27
@@ -37,7 +36,7 @@ def drum():
             if (suma==27):
                 sumaTot=27
 
-        #Hago una lista con los números del 1 al 64 en binari
+        #Hago una lista con los números del 1 al 64 en binario
         listaBin = []
         for i in range(64):
             listaBin.append(dec_bin(i))
@@ -100,7 +99,6 @@ def orejetasInCol(orejetas):
     num = 0
     for i in range(27):
         num += orejetas[i]
-    
     return num
 
 # Para saber el número de orejetas en barras de desplazamiento en una columna
@@ -108,5 +106,4 @@ def orejetasInColDespl(orejetas):
     num = 0
     for i in range(27, len(orejetas)):
         num += orejetas[i]
-    
     return num

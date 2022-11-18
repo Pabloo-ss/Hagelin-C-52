@@ -24,7 +24,6 @@ def wheels():
             y.append(0)
 
     #Se eligen 6 de las 12 ruedas al azar, con un orden también elegido al azar
-
     ruedasSelected = []
     for i in range(6): 
         esta = 1
@@ -47,14 +46,14 @@ def wheels():
     #Hay que intentar tener aproximadamente el 50% de los pines activos
     #pero para eso podemos suponer que al elegir cada uno como si se lanzase
     #una moneda, se hará 50/50 aproximadamente
-
     for x,y in wheels.items():
         y[0] = randint(0,1)
         y[1] = randint(0,1)
         y[2] = randint(0,1)
         for i in range(3,x): 
             pin = randint(0,1)      #Como si se lanzase la moneda
-            if (y[i-1] != pin or y[i-2]!= pin or y[i-3] != pin):    #No debe haber más de 3 pines activos seguidos
+            #No debe haber más de 3 pines activos seguidos
+            if (y[i-1] != pin or y[i-2]!= pin or y[i-3] != pin):    
                 y[i] = pin
             else:
                 if (pin == 0):
@@ -73,7 +72,6 @@ def wheels():
             posWheels[i] = ran                          #y establece la posición inicial de cada rueda
         else:
             message = "\ERROR. No pertenece al rango adecuado"
-
     return (wheels, posWheels)
 
 #Avanza las ruedas el número de pasos necesarios
