@@ -86,7 +86,27 @@ texto = texto.replace(" ", "X")
 textoPlano = ""
 textoCifrado = ""
 
-texto, textoPlano, textoCifrado = cipher_decipher(texto, textoPlano, textoCifrado)
+#Al cifrar, esto se hace en grupos de 5 letras
+#Para ello:
+# 1. Separamos el texto en grupos de 5 caracteres
+# 2. Aplicamos la función de cifrado a dichos grupos
+# 3. Unimos el texto resultante
+
+
+for i in range(0, len(texto), 5):   #for avanza de 5 en 5
+    textoPlanoSeparado = ""
+    textoCifradoSeparado = ""
+    union = ""
+    for j in range(i, i + 5):  #Ahora voy uniendo los caracteres de 5 en 5
+        if j < len(texto):
+            union = union + texto[j]
+    union, textoPlanoSeparado, textoCifradoSeparado = cipher_decipher(union, textoPlanoSeparado, textoCifradoSeparado)
+
+    #Uno al texto final los 5 caracteres nuevos
+    textoPlano = textoPlano + textoPlanoSeparado
+    textoCifrado = textoCifrado + textoCifradoSeparado
+
+#texto, textoPlano, textoCifrado = cipher_decipher(texto, textoPlano, textoCifrado)
 
 print("Texto codificado: ", textoPlano)
 print("Texto cifrado: ", textoCifrado)
@@ -103,6 +123,7 @@ ruedaImp1, ruedaImp2 = impressionWheels(configInicial["ruedaImp"])
 
 textoDescifrado = ""
 
+#El descifrado no se hace en grupos, sino directamente 
 textoCifrado, textoPlano, textoDescifrado = cipher_decipher(textoCifrado, textoPlano, textoDescifrado)
 
 print("Texto cifrado: ", textoCifrado)

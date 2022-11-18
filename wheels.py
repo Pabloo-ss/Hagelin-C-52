@@ -65,13 +65,16 @@ def wheels():
 
     # Determina la posición inicial de cada rueda, recibiéndola por teclado
     message = ''
-    for i in range(6):
+    i=0
+    while i in range(6):
         message = "\nRango de 0 a " + str(list(wheels.keys())[i] - 1) + ' ---> Posicion inicial rueda ' + str(i + 1) + ': '
         ran = int(input(message))
-        if ran in range(0, list(wheels.keys())[i] - 1): #Comprueba que la posición esté en el rango adecuado
+        if 0 <= ran <= (list(wheels.keys())[i] - 1): #Comprueba que la posición esté en el rango adecuado
             posWheels[i] = ran                          #y establece la posición inicial de cada rueda
+            i+=1
         else:
-            message = "\ERROR. No pertenece al rango adecuado"
+            print("ERROR. No pertenece al rango adecuado")
+            
     return (wheels, posWheels)
 
 #Avanza las ruedas el número de pasos necesarios
