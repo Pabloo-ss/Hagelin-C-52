@@ -18,12 +18,12 @@ def imprime(rueda):
 
 def imprimeTextoR1(letra, rueda1, rueda2):
     while letra != rueda1[0]:
-        rueda1.rotate(1)
+        rueda1.rotate(-1)
         rueda2.rotate(1)
     return imprime(rueda1)
 
 def imprimeTextoR2(rueda1, rueda2, n):
-    rueda1.rotate(n)
+    rueda1.rotate(-n)
     rueda2.rotate(n)
     return imprime(rueda2)
 

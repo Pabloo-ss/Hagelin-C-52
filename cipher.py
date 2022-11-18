@@ -46,71 +46,20 @@ for letra in texto:
     col = -1
     colDesp = 0
     barras = 0
-    # ***Columna 1***
-    col += 1
-    colDesp += 1
-    # 1º miramos si el brazo guía está activo comprobando el pin de la posición de la rueda de esa columna
-    if (isBrazoActivo(list(ruedas.values())[col], posRuedas[col])):
-        # 2º si está activo comprobamos cuantas barras (sin las de desplazaminto) se verían desplazadas para añadir un paso a la rueda de impresión de cifrado
-        barras += orejetasInCol(list(tambor.values())[col])
-        # 3º comprobamos las barras de desplazaminto desplazadas a la izuqierda
-        desplazamientos  = orejetasInColDespl(list(tambor.values())[col])
-        for i in range(colDesp, len(barrasDesp)):
-            barrasDesp[i] += desplazamientos / (len(barrasDesp) - colDesp)
-    # si no está activo pasamos a la siguiente columna
-
-    # ***Columna 2***
-    col += 1
-    colDesp += 1
-    # 1º miramos si el brazo guía está activo comprobando el pin de la posición de la rueda de esa columna
-    if (isBrazoActivo(list(ruedas.values())[col], posRuedas[col])):
-        # 2º si está activo comprobamos cuantas barras se verían desplazadas para añadir un paso a la rueda de impresión de cifrado
-        barras += orejetasInCol(list(tambor.values())[col])
-        # 3º comprobamos las barras de desplazaminto desplazadas a la izuqierda
-        desplazamientos  = orejetasInColDespl(list(tambor.values())[col])
-        for i in range(colDesp, len(barrasDesp)):
-            barrasDesp[i] += desplazamientos / (len(barrasDesp) - colDesp)
-    # si no está activo  pasamos a la siguiente columna
-
-    # ***Columna 3***
-    col += 1
-    colDesp += 1
-    # 1º miramos si el brazo guía está activo comprobando el pin de la posición de la rueda de esa columna
-    if (isBrazoActivo(list(ruedas.values())[col], posRuedas[col])):
-        # 2º si está activo comprobamos cuantas barras se verían desplazadas para añadir un paso a la rueda de impresión de cifrado
-        barras += orejetasInCol(list(tambor.values())[col])
-        # 3º comprobamos las barras de desplazaminto desplazadas a la izuqierda
-        desplazamientos  = orejetasInColDespl(list(tambor.values())[col])
-        for i in range(colDesp, len(barrasDesp)):
-            barrasDesp[i] += desplazamientos / (len(barrasDesp) - colDesp)
-    # si no está activo pasamos a la siguiente columna
-
-    # ***Columna 4***
-    col += 1
-    colDesp += 1
-    # 1º miramos si el brazo guía está activo comprobando el pin de la posición de la rueda de esa columna
-    if (isBrazoActivo(list(ruedas.values())[col], posRuedas[col])):
-        # 2º si está activo comprobamos cuantas barras se verían desplazadas para añadir un paso a la rueda de impresión de cifrado
-        barras += orejetasInCol(list(tambor.values())[col])
-        # 3º comprobamos las barras de desplazaminto desplazadas a la izuqierda
-        desplazamientos  = orejetasInColDespl(list(tambor.values())[col])
-        for i in range(colDesp, len(barrasDesp)):
-            barrasDesp[i] += desplazamientos / (len(barrasDesp) - colDesp)
-    # si no está activo pasamos a la siguiente columna
-
-    # ***Columna 5***
-    col += 1
-    colDesp += 1
-    # 1º miramos si el brazo guía está activo comprobando el pin de la posición de la rueda de esa columna
-    if (isBrazoActivo(list(ruedas.values())[col], posRuedas[col])):
-        # 2º si está activo comprobamos cuantas barras se verían desplazadas para añadir un paso a la rueda de impresión de cifrado
-        barras += orejetasInCol(list(tambor.values())[col])
-        # 3º comprobamos las barras de desplazaminto desplazadas a la izuqierda
-        desplazamientos  = orejetasInColDespl(list(tambor.values())[col])
-        for i in range(colDesp, len(barrasDesp)):
-            barrasDesp[i] += desplazamientos / (len(barrasDesp) - colDesp)
-    # si no está activo pasamos a la siguiente columna
-
+    # ***Columnas 1-5***
+    for i in range(5):
+        col += 1    
+        colDesp += 1
+        # 1º miramos si el brazo guía está activo comprobando el pin de la posición de la rueda de esa columna
+        if (isBrazoActivo(list(ruedas.values())[col], posRuedas[col])):
+            # 2º si está activo comprobamos cuantas barras se verían desplazadas para añadir un paso a la rueda de impresión de cifrado
+            barras += orejetasInCol(list(tambor.values())[col])
+            # 3º comprobamos las barras de desplazaminto desplazadas a la izuqierda
+            desplazamientos  = orejetasInColDespl(list(tambor.values())[col])
+            for i in range(colDesp, len(barrasDesp)):
+                barrasDesp[i] += desplazamientos / (len(barrasDesp) - colDesp)
+        # si no está activo pasamos a la siguiente columna
+    
     # ***Columna 6***
     col += 1
     # 1º miramos si el brazo guía está activo comprobando el pin de la posición de la rueda de esa columna
@@ -160,70 +109,19 @@ for letra in textoCifrado:
     col = -1
     colDesp = 0
     barras = 0
-    # ***Columna 1***
-    col += 1
-    colDesp += 1
-    # 1º miramos si el brazo guía está activo comprobando el pin de la posición de la rueda de esa columna
-    if (isBrazoActivo(list(ruedas.values())[col], posRuedas[col])):
-        # 2º si está activo comprobamos cuantas barras (sin las de desplazaminto) se verían desplazadas para añadir un paso a la rueda de impresión de cifrado
-        barras += orejetasInCol(list(tambor.values())[col])
-        # 3º comprobamos las barras de desplazaminto desplazadas a la izuqierda
-        desplazamientos  = orejetasInColDespl(list(tambor.values())[col])
-        for i in range(colDesp, len(barrasDesp)):
-            barrasDesp[i] += desplazamientos / (len(barrasDesp) - colDesp)
-    # si no está activo pasamos a la siguiente columna
-
-    # ***Columna 2***
-    col += 1
-    colDesp += 1
-    # 1º miramos si el brazo guía está activo comprobando el pin de la posición de la rueda de esa columna
-    if (isBrazoActivo(list(ruedas.values())[col], posRuedas[col])):
-        # 2º si está activo comprobamos cuantas barras se verían desplazadas para añadir un paso a la rueda de impresión de cifrado
-        barras += orejetasInCol(list(tambor.values())[col])
-        # 3º comprobamos las barras de desplazaminto desplazadas a la izuqierda
-        desplazamientos  = orejetasInColDespl(list(tambor.values())[col])
-        for i in range(colDesp, len(barrasDesp)):
-            barrasDesp[i] += desplazamientos / (len(barrasDesp) - colDesp)
-    # si no está activo  pasamos a la siguiente columna
-
-    # ***Columna 3***
-    col += 1
-    colDesp += 1
-    # 1º miramos si el brazo guía está activo comprobando el pin de la posición de la rueda de esa columna
-    if (isBrazoActivo(list(ruedas.values())[col], posRuedas[col])):
-        # 2º si está activo comprobamos cuantas barras se verían desplazadas para añadir un paso a la rueda de impresión de cifrado
-        barras += orejetasInCol(list(tambor.values())[col])
-        # 3º comprobamos las barras de desplazaminto desplazadas a la izuqierda
-        desplazamientos  = orejetasInColDespl(list(tambor.values())[col])
-        for i in range(colDesp, len(barrasDesp)):
-            barrasDesp[i] += desplazamientos / (len(barrasDesp) - colDesp)
-    # si no está activo pasamos a la siguiente columna
-
-    # ***Columna 4***
-    col += 1
-    colDesp += 1
-    # 1º miramos si el brazo guía está activo comprobando el pin de la posición de la rueda de esa columna
-    if (isBrazoActivo(list(ruedas.values())[col], posRuedas[col])):
-        # 2º si está activo comprobamos cuantas barras se verían desplazadas para añadir un paso a la rueda de impresión de cifrado
-        barras += orejetasInCol(list(tambor.values())[col])
-        # 3º comprobamos las barras de desplazaminto desplazadas a la izuqierda
-        desplazamientos  = orejetasInColDespl(list(tambor.values())[col])
-        for i in range(colDesp, len(barrasDesp)):
-            barrasDesp[i] += desplazamientos / (len(barrasDesp) - colDesp)
-    # si no está activo pasamos a la siguiente columna
-
-    # ***Columna 5***
-    col += 1
-    colDesp += 1
-    # 1º miramos si el brazo guía está activo comprobando el pin de la posición de la rueda de esa columna
-    if (isBrazoActivo(list(ruedas.values())[col], posRuedas[col])):
-        # 2º si está activo comprobamos cuantas barras se verían desplazadas para añadir un paso a la rueda de impresión de cifrado
-        barras += orejetasInCol(list(tambor.values())[col])
-        # 3º comprobamos las barras de desplazaminto desplazadas a la izuqierda
-        desplazamientos  = orejetasInColDespl(list(tambor.values())[col])
-        for i in range(colDesp, len(barrasDesp)):
-            barrasDesp[i] += desplazamientos / (len(barrasDesp) - colDesp)
-    # si no está activo pasamos a la siguiente columna
+    # ***Columnas 1-5***
+    for i in range(5):
+        col += 1    
+        colDesp += 1
+        # 1º miramos si el brazo guía está activo comprobando el pin de la posición de la rueda de esa columna
+        if (isBrazoActivo(list(ruedas.values())[col], posRuedas[col])):
+            # 2º si está activo comprobamos cuantas barras se verían desplazadas para añadir un paso a la rueda de impresión de cifrado
+            barras += orejetasInCol(list(tambor.values())[col])
+            # 3º comprobamos las barras de desplazaminto desplazadas a la izuqierda
+            desplazamientos  = orejetasInColDespl(list(tambor.values())[col])
+            for i in range(colDesp, len(barrasDesp)):
+                barrasDesp[i] += desplazamientos / (len(barrasDesp) - colDesp)
+        # si no está activo pasamos a la siguiente columna
 
     # ***Columna 6***
     col += 1

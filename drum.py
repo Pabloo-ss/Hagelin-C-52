@@ -1,6 +1,23 @@
 from operator import truediv
 from random import randint
 from xml.etree.ElementTree import tostring
+#Función para pasar un número de decimal a binario, teniendo cada número 6 dígitos
+def dec_bin(n):
+    bin = 0
+    mult = 1
+
+    while n != 0:
+        bin = bin + n%2*mult
+        n //= 2
+        mult *= 10
+            
+    toStr = str(bin)
+    while (len(toStr) < 6):
+        #  print(toStr , " tiene longitud ", len(toStr))
+        toStr = '0' + toStr
+
+    return toStr
+
 
 def drum():
     while True:
@@ -27,29 +44,6 @@ def drum():
         """ for i in range(6):
             print(lista[i])
  """
-        #Función para pasar un número de decimal a binario, teniendo cada número 6 dígitos
-        def dec_bin(n):
-            bin = 0
-            mult = 1
-
-            while n != 0:
-                bin = bin + n%2*mult
-                n //= 2
-                mult *= 10
-            
-            toStr = str(bin)
-            while (len(toStr) < 6):
-            #  print(toStr , " tiene longitud ", len(toStr))
-                toStr = '0' + toStr
-
-            return toStr
-
-        #
-        #listaBin = []
-        #for i in range(6):
-        #    listaBin.append(dec_bin(lista[i]))
-        #    print(lista[i], " en binario es ", listaBin[i])
-        #
 
         #Hago una lista con los números del 1 al 64 en binario
 
@@ -91,6 +85,8 @@ def drum():
     #Para probar por último imprimimos la clave seleccionada
     #print(lista)    
 
+    #Al llegar a  este punto ya tenemos una clave adecuada
+
     #Creamos el diccionario que definirá el estado del tambor indicando las orejetas colocadas
     tambor = {}
     orejetas = []
@@ -128,7 +124,7 @@ def orejetasInCol(orejetas):
     
     return num
 
-# Para saber el número de orejetasen barras de desplazamiento en una columna
+# Para saber el número de orejetas en barras de desplazamiento en una columna
 def orejetasInColDespl(orejetas):
     num = 0
     for i in range(27, len(orejetas)):
