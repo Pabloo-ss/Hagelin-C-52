@@ -6,7 +6,7 @@ from collections import deque
 def impressionWheels(n):
     rueda1 = deque(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'])
     rueda2 = deque(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'])
-    rueda2.rotate(n)    #Se rotan ambas ruedas n elementos
+    rueda2.rotate(n)    #Se aplica un desplazamiento inicial de n elementos
     return (rueda1, rueda2)
 
 def imprime(rueda):

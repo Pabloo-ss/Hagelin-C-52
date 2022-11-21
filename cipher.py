@@ -9,9 +9,9 @@ from wheels import *
 # Las barras de desplazamiento se encargan del avance de las ruedas (no añaden desplazamineto a la impresión). La 1ª rueda siempre avanza y 
 # las demás dependerán de si hay un brazo guía activo en esa posición. Si está activo el de la posición 1 se moverán las 
 # ruedas 2,3,4,5 y 6; si está activo el de la posición 2 se moverán la 3,4,5 y 6; etc. La barra 1 avanza la rueda 2, la barra 2 avanza la rueda 3...
-#   Luego está el desplazamineto de las ruedas de impresión entre sí usando el modo variable y eso pero por ahora lo dejamos de lado mejor (diría yo)
-# Pero creo q es que primero imprime la normal y a la segunda se le aplica el desplazamiento: en el modo variable este desplazamiento se aplica
-# solo a segundo rueda de impresión, mientras que em el constante se aplica a las dos.
+# Luego está el desplazamiento de las ruedas de impresión entre sí usando el modo variable:
+# primero imprime la primera y a la segunda se le aplica el desplazamiento,  en el modo variable este desplazamiento se aplica
+# solo a la segundo rueda de impresión, mientras que en el constante se aplica a las dos.
 
 #FUNCIÓN PARA CIFRAR/DESCIFRAR
 
